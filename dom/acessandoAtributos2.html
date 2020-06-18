@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        // const lista = document.querySelector('#compras')
+        const lista = document.querySelector('div ul[destino="escritorio"]')
+        console.log('Elemento "ul"..........')
+        console.log('childNodes', lista.childNodes)
+        console.log('destino', lista.destino) // undefined
+        console.log('getAttribute', lista.getAttribute('destino'))
+        console.log('hasAttribute', lista.hasAttribute('destino')) // true
+        lista.setAttribute('destino', 'empresa') // alterar destino => empresa
+        lista.setAttribute('status', 'aberto') // adicionar
+        lista.removeAttribute('destino') // remover
+        console.log(lista.dataset.urgencia) // "5"
+        lista.dataset.urgencia = 4 // 5 => 4
+        console.log(lista.getAttribute('data-urgencia')) // 4
+
+        //cuidado
+        const label = document.querySelector('label')
+        console.log(label.for) // undefined
+        console.log(label.htmlFor) // compras
+        console.log(label.getAttribute('for')) // compras
+    </script>
+</body>
+
+</html>
